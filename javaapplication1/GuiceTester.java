@@ -31,9 +31,6 @@ public class GuiceTester {
       
       customer2.placeOrder("Okonimiyaki");
       
-      double Balance = new RegisterCustomerImpl().getBalance();
-      
-      System.out.println(Balance);
    } 
 }
 
@@ -102,7 +99,7 @@ public class GuiceTester {
                 
                 List<MenuImpl.foodItem> dspMenu = new MenuImpl().getMenu(); 
             
-                for (MenuImpl.foodItem temp : dspMenu) {
+                for(MenuImpl.foodItem temp : dspMenu) {
                        if(temp.get_itemName().equals(item_name)){
                             transaction(customerBalance, temp.get_itemPrice());
                        }
@@ -152,8 +149,6 @@ public class GuiceTester {
            public void printMenu();
             
            public void removeMeal(String item_name);
-    
-           public void removeMeal(int i);
                   
         }
          
@@ -205,20 +200,14 @@ public class GuiceTester {
                 foodItem delMeal = new foodItem(itemName, itemPrice,itemPrepTime);
                 menu.add(delMeal);
             };
-            
-            public void removeMeal(int i){
-                menu.remove(i);
-            };
-            
-            //@Override
-            
-            
+              
+            @Override
             public void removeMeal(String item_name){// check if meal is even there, if not found throw meal not found
                 List<foodItem> tmp_MENU = getMenu();
                 int i =0;
                 for (foodItem temp : tmp_MENU) {
                        if(temp.get_itemName().contains(item_name)){
-
+                            System.out.println(temp);
                        }
                        i++;
 		}
