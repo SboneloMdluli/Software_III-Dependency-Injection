@@ -17,8 +17,6 @@ import com.google.inject.Injector;
 import com.google.inject.Provides;
 import java.util.ArrayList;
 import java.util.List; 
-import static javaapplication1.MenuImpl.getMenu;
-import static javaapplication1.MenuImpl.menu;
 
 public class GuiceTester {
    public static void main(String[] args) {
@@ -31,7 +29,11 @@ public class GuiceTester {
       
       customer2.login("red","redemption");
       
-      customer2.placeOrder("Ramen");
+      customer2.placeOrder("Okonimiyaki");
+      
+      double Balance = new RegisterCustomerImpl().getBalance();
+      
+      System.out.println(Balance);
    } 
 }
 
@@ -65,13 +67,16 @@ public class GuiceTester {
                 processOrder order = new processOrder(item);
          }
          
+          void updateBalance(double itemPrice){
+                 balance = balance - itemPrice;
+             }
+         
          static double getBalance(){
              return balance;
          }
         
          @Override
         public void login(final String firstName, final String lastName){
-            //chief masterChief = new chief();
             new chief().getMenu();
         }
         
@@ -106,12 +111,15 @@ public class GuiceTester {
                    
             void transaction(double balance, double itemPrice){
                 if(balance>itemPrice){
-                    // subtract the money here
+                    new RegisterCustomerImpl().updateBalance(itemPrice);
+  
                     System.out.println("-----------------------------SUCCESFUL PURCHASE-------------------------------");
                 }else{
                     System.out.println("------------------------------INSUFICIENT FUNDS---------------------------------");
                 }
             }
+            
+           
             
         }
            
@@ -210,8 +218,7 @@ public class GuiceTester {
                 int i =0;
                 for (foodItem temp : tmp_MENU) {
                        if(temp.get_itemName().contains(item_name)){
-                         // removeMeal(i);
-                         //System.out.println(temp.get_itemName() + "hurrayy babababa " + i);
+
                        }
                        i++;
 		}
