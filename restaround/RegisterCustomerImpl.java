@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package restaround;
-
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 /**
  *
  * @author mylaptop
  */
-  // customer implementation
-    class RegisterCustomerImpl implements RegisterCustomer{
+class RegisterCustomerImpl implements RegisterCustomer{
          private String firstName; 
          private String lastName;
          private String email;
@@ -28,7 +30,7 @@ package restaround;
           
         @Override
          public void placeOrder(String item){
-                processOrder order = new processOrder(item);
+                processOrder order = new processOrder(item); // inject
          }
          
           void updateBalance(double itemPrice){
@@ -41,7 +43,10 @@ package restaround;
         
          @Override
         public void login(final String firstName, final String lastName){
-            new chief().getMenu();
+            Injector injector = Guice.createInjector(new chefModule());
+            chef masterChef = injector.getInstance(chef.class);
+           //new chef(); // inject
+           masterChef.getMenu();
         }
         
          @Override

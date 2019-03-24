@@ -4,20 +4,20 @@
  * and open the template in the editor.
  */
 package restaround;
-
-import java.util.ArrayList;
-import java.util.List;
-//import com.google.inject.AbstractModule;
-//import com.google.inject.Guice;
-//import com.google.inject.Inject;
-//import com.google.inject.Injector;
-//import com.google.inject.Provides;
-
+import com.google.inject.AbstractModule;
+import com.google.inject.Guice;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
+/**
+ *
+ * @author mylaptop
+ */
 public class RestAround {
-
     public static void main(String[] args) {
-        RegisterCustomer customer2 = new RegisterCustomerImpl(); // must inject 
-      
+        
+      //Injector static void = Giuce.createInjector();
+      RegisterCustomer customer2 = new RegisterCustomerImpl(); // must inject 
+     
       customer2.registrationForm("Sbonelo", "Mdluli", "mdlulisbonelo@gmail.com", 902838,200);
       
       customer2.confirmationMessage();
@@ -26,6 +26,4 @@ public class RestAround {
       
       customer2.placeOrder("Okonimiyaki");
     }
-    
 }
-      

@@ -1,22 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restaround;
 
 import java.util.List;
 
-/**
- *
- * @author mylaptop
- */
 
         class processOrder{
             
             processOrder(String item_name){
                 
-                double customerBalance = new RegisterCustomerImpl().getBalance();
+                double customerBalance = new RegisterCustomerImpl().getBalance(); // inject
                 
                 List<MenuImpl.foodItem> dspMenu = new MenuImpl().getMenu(); 
             
@@ -29,7 +21,7 @@ import java.util.List;
                    
             void transaction(double balance, double itemPrice){
                 if(balance>itemPrice){
-                    new RegisterCustomerImpl().updateBalance(itemPrice);
+                    new RegisterCustomerImpl().updateBalance(itemPrice); // inject 
   
                     System.out.println("-----------------------------SUCCESFUL PURCHASE-------------------------------");
                 }else{
