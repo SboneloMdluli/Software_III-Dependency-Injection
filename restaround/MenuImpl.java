@@ -3,10 +3,6 @@ package restaround;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author mylaptop
- */
 // menu implementation
          class MenuImpl implements Menu{
             // define the properties of a food item
@@ -67,6 +63,4 @@ import java.util.List;
                        i++;
 		}
             };
-                
-            
         }

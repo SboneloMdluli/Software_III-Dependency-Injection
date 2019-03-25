@@ -28,10 +28,17 @@ class RegisterCustomerImpl implements RegisterCustomer{
             this.balance = balance;
         }
           
-        @Override
+        @Override // method injection
          public void placeOrder(String item){
                 processOrder order = new processOrder(item); // inject
          }
+         
+         /*
+             public void placeOrder(String item){
+                processOrder order = new processOrder(item); // inject
+         }
+         
+         */
          
           void updateBalance(double itemPrice){
                  balance = balance - itemPrice;
@@ -45,8 +52,7 @@ class RegisterCustomerImpl implements RegisterCustomer{
         public void login(final String firstName, final String lastName){
             Injector injector = Guice.createInjector(new chefModule());
             chef masterChef = injector.getInstance(chef.class);
-           //new chef(); // inject
-           masterChef.getMenu();
+            masterChef.getMenu();
         }
         
          @Override
