@@ -6,4 +6,5 @@ public interface RegisterCustomer {
         public void login(final String firstName, final String lastName);
         public void confirmationMessage();
         public void placeOrder(String item);
+        void updateBalance(double itemPrice);
 }

@@ -28,19 +28,16 @@ class RegisterCustomerImpl implements RegisterCustomer{
             this.balance = balance;
         }
           
+        
         @Override // method injection
          public void placeOrder(String item){
-                processOrder order = new processOrder(item); // inject
+            Injector injector = Guice.createInjector(new processOrderModule());
+            processOrder payment = injector.getInstance(processOrder.class);
+            payment.Bill(item);
          }
-         
-         /*
-             public void placeOrder(String item){
-                processOrder order = new processOrder(item); // inject
-         }
-         
-         */
-         
-          void updateBalance(double itemPrice){
+
+         @Override
+          public void updateBalance(double itemPrice){
                  balance = balance - itemPrice;
              }
          

@@ -6,7 +6,7 @@ import java.util.List;
 // menu implementation
          class MenuImpl implements Menu{
             // define the properties of a food item
-            class foodItem{
+             class foodItem{
                 final String item_name;
                 final double item_price;
                 final double item_prepTime;
