@@ -1,35 +1,34 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package restaround;
-import com.google.inject.AbstractModule;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
-/**
- *
- * @author mylaptop
- */
-class RegisterCustomerImpl implements RegisterCustomer{
+import com.google.inject.name.Named;
+
+class CustomerImpl implements Customer{
          private String firstName; 
          private String lastName;
          private String email;
          private double accNum;
          static private double balance;
+        // private double balance;
          
          @Override
+        // @Inject
         public void registrationForm(final String firstName, final String lastName, final String email, final double accNum, double balance){
             this.firstName = firstName;
             this.lastName = lastName;
             this.email = email;
             this.accNum = accNum;
+            setBalance(balance);
+        }
+         
+        @Override 
+        public void setBalance(double balance){
             this.balance = balance;
         }
-          
         
-        @Override // method injection
+        @Override 
          public void placeOrder(String item){
             Injector injector = Guice.createInjector(new processOrderModule());
             processOrder payment = injector.getInstance(processOrder.class);
@@ -39,12 +38,14 @@ class RegisterCustomerImpl implements RegisterCustomer{
          @Override
           public void updateBalance(double itemPrice){
                  balance = balance - itemPrice;
-             }
-         
-         static double getBalance(){
+                 setBalance(balance);
+          }
+
+         @Override 
+         public double getBalance(){
              return balance;
          }
-        
+                 
          @Override
         public void login(final String firstName, final String lastName){
             Injector injector = Guice.createInjector(new chefModule());

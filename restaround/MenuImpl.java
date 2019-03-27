@@ -1,5 +1,4 @@
 package restaround;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,11 +31,11 @@ import java.util.List;
             
              private static List<foodItem> menu = new ArrayList<foodItem>(); // create menu 
              
+            
              static public List<foodItem> getMenu(){
                 return menu;
              }   
-             
-            
+                        
              @Override
             public void printMenu(){
                 System.out.println("---------------------------------MENU------------------------------");

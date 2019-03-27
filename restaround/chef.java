@@ -1,11 +1,7 @@
 
 package restaround;
 import com.google.inject.Inject;
-import com.google.inject.AbstractModule;
-/**
- *
- * @author mylaptop
- */
+
 public class chef {
    
     private final Menu chefMenu; 
