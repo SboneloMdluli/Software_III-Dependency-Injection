@@ -29,13 +29,14 @@ import java.util.List;
         
       
         @Override
-        public void Bill(String item_name){
+        public void Bill(String item_name, int quantity){
             
             Injector injector = Guice.createInjector(new customerModule());
             Customer customer = injector.getInstance(Customer.class);
             
             double customerBalance = customer.getBalance();
-                            
+            setQuantity(quantity);
+            
             List<MenuImpl.foodItem> dspMenu = new MenuImpl().getMenu();  // static method
 
                 for(MenuImpl.foodItem temp : dspMenu) {
@@ -47,8 +48,11 @@ import java.util.List;
         }
             @Override
             public void transaction(double balance, double itemPrice){
-                if(balance>itemPrice){
-                    customer.updateBalance(itemPrice*quantity);
+                quantity = getQuantity();
+                double totalPrice = itemPrice*quantity;
+                
+                if(balance>totalPrice){
+                    customer.updateBalance(totalPrice);
                     System.out.println("-----------------------------SUCCESFUL PURCHASE-------------------------------");
                 }else{
                     System.out.println("------------------------------INSUFICIENT FUNDS---------------------------------");

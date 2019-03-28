@@ -1,9 +1,7 @@
 
 package restaround;
 import com.google.inject.Guice;
-import com.google.inject.Inject;
 import com.google.inject.Injector;
-import com.google.inject.name.Named;
 
 class CustomerImpl implements Customer{
          private String firstName; 
@@ -11,10 +9,9 @@ class CustomerImpl implements Customer{
          private String email;
          private double accNum;
          static private double balance;
-        // private double balance;
-         
+
          @Override
-        // @Inject
+ 
         public void registrationForm(final String firstName, final String lastName, final String email, final double accNum, double balance){
             this.firstName = firstName;
             this.lastName = lastName;
@@ -29,10 +26,10 @@ class CustomerImpl implements Customer{
         }
         
         @Override 
-         public void placeOrder(String item){
+         public void placeOrder(String item,int quantity){
             Injector injector = Guice.createInjector(new processOrderModule());
             processOrder payment = injector.getInstance(processOrder.class);
-            payment.Bill(item);
+            payment.Bill(item,quantity);
          }
 
          @Override
@@ -48,7 +45,7 @@ class CustomerImpl implements Customer{
                  
          @Override
         public void login(final String firstName, final String lastName){
-            Injector injector = Guice.createInjector(new chefModule());
+            Injector injector = Guice.createInjector(new menuModule());
             chef masterChef = injector.getInstance(chef.class);
             masterChef.getMenu();
         }
