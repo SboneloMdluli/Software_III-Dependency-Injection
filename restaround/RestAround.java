@@ -4,7 +4,8 @@ import com.google.inject.Injector;
 
 public class RestAround {
     public static void main(String[] args) {
-      
+    //driver code
+     
      Injector injector = Guice.createInjector();
      Customer customer = injector.getInstance(Customer.class);
      
@@ -14,9 +15,9 @@ public class RestAround {
       
      customer.login("red","redemption");
       
-     customer.placeOrder("Okonimiyaki",4);
+     customer.placeOrder("Okonimiyaki",2);
     
-     // Premium Customer with account
+    // customer.registrationForm("Xanz", "Mdluli", "mdlulisbonelo@gmail.com", 902838, 200);
 
     }
 }
