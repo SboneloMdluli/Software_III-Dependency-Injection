@@ -63,6 +63,7 @@ class MenuImpl implements Menu {
         for (foodItem temp : tmp_MENU) {
             if (temp.get_itemName().contains(item_name)) {
                 // System.out.println(temp);
+                //tmp_MENU.remove(temp);
             }
             i++;
         }

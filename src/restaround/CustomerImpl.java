@@ -41,7 +41,7 @@ class CustomerImpl implements Customer {
     @Override
     public void placeOrder(String item, int quantity) {
         Injector injector = Guice.createInjector(new processOrderModule());
-        processOrder payment = injector.getInstance(processOrder.class);
+        processOrderImpl payment = injector.getInstance(processOrderImpl.class);
         payment.Bill(item, quantity);
     }
 

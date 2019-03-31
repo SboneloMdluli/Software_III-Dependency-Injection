@@ -74,12 +74,15 @@ public class CustomerImplTest {
     @Test
     public void testPlaceOrder() {
         System.out.println("placeOrder");
-        String item = "";
-        int quantity = 0;
+        String item = "Okonimiyaki";
+        int quantity = 1;
+        double balance = 2000.0;
+        
         CustomerImpl instance = new CustomerImpl();
+        instance.setBalance(balance);
         instance.placeOrder(item, quantity);
-        // TODO review the generated test code and remove the default call to fail.
-//        assertEquals(balance,instance.getBalance(), 0.001);
+        
+      
     }
 
     /**
@@ -92,10 +95,10 @@ public class CustomerImplTest {
         double balance = 2000.0;
         CustomerImpl instance = new CustomerImpl();
         instance.setBalance(balance);
-        instance.updateBalance(itemPrice);
+        instance.updateBalance(itemPrice); // money that is used 
         // TODO review the generated test code and remove the default call to fail.
         assertEquals(instance.getBalance(),balance-itemPrice, 0.001);
     }
 
-    
+ 
 }
