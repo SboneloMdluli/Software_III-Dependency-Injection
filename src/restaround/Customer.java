@@ -20,5 +20,6 @@ public interface Customer {
     public double getBalance();
     
     public String getName();
-
+    
+    public double getAccNumber();
 }

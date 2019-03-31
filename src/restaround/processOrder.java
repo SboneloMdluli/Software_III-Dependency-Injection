@@ -6,7 +6,6 @@ import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import java.util.List;
 
-// another constructor injection
 class processOrder implements processOrderI {
 
     private int quantity;
@@ -30,13 +29,14 @@ class processOrder implements processOrderI {
     @Override
     public void Bill(String item_name, int quantity) {
 
-        Injector injector = Guice.createInjector();
+        Injector injector = Guice.createInjector(new menuModule());
         Customer customer = injector.getInstance(Customer.class);
-
+        Menu customerMenu = injector.getInstance(Menu.class);
+        
         double customerBalance = customer.getBalance();
         setQuantity(quantity);
 
-        List<MenuImpl.foodItem> dspMenu = new MenuImpl().getMenu();  // static method
+        List<MenuImpl.foodItem> dspMenu = customerMenu.getMenu(); 
 
         for (MenuImpl.foodItem temp : dspMenu) {
             if (temp.get_itemName().equals(item_name)) {
@@ -54,6 +54,7 @@ class processOrder implements processOrderI {
         if (balance > totalPrice) {
             customer.updateBalance(totalPrice);
             System.out.println("-----------------------------SUCCESFUL PURCHASE-------------------------------");
+            System.out.println("Total Amount :R" + totalPrice);
         } else {
             System.out.println("------------------------------INSUFICIENT FUNDS---------------------------------");
         }

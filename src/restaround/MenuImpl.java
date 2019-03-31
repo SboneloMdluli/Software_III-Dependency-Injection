@@ -34,7 +34,8 @@ class MenuImpl implements Menu {
 
     private static List<foodItem> menu = new ArrayList<foodItem>(); // create menu
 
-    static public List<foodItem> getMenu() {
+    @Override
+    public List<foodItem> getMenu() {
         return menu;
     }
 
@@ -51,13 +52,12 @@ class MenuImpl implements Menu {
 
     @Override
     public void addMeal(String itemName, double itemPrice, double itemPrepTime) {
-        foodItem delMeal = new foodItem(itemName, itemPrice, itemPrepTime);
-        menu.add(delMeal);
+        foodItem Meal = new foodItem(itemName, itemPrice, itemPrepTime);
+        menu.add(Meal);
     }
 
-  
-   @Override
-    public void removeMeal(String item_name) {// check if meal is even there, if not found throw meal not found
+    @Override
+    public void removeMeal(String item_name) {
         List<foodItem> tmp_MENU = getMenu();
         int i = 0;
         for (foodItem temp : tmp_MENU) {
@@ -68,4 +68,4 @@ class MenuImpl implements Menu {
         }
     }
 
-        }
+}

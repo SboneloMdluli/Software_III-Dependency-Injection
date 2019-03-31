@@ -22,15 +22,15 @@ class CustomerImpl implements Customer {
         this.email = email;
         this.accNum = accNum;
         setBalance(balance);
-        
-         Injector injector = Guice.createInjector(new databaseModule());
+
+        Injector injector = Guice.createInjector(new databaseModule());
         customerRepository customerDatabase = injector.getInstance(customerRepository.class);
         try {
             customerDatabase.addCustomer(getName());
         } catch (IOException ex) {
             Logger.getLogger(CustomerImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @Override
@@ -50,6 +50,12 @@ class CustomerImpl implements Customer {
         balance = balance - itemPrice;
         setBalance(balance);
     }
+    
+    
+     @Override
+    public double getAccNumber() {
+        return accNum;
+    }
 
     @Override
     public double getBalance() {
@@ -65,12 +71,10 @@ class CustomerImpl implements Customer {
 
     @Override
     public String getName() {
-        return (firstName+" "+lastName);
+        return (firstName + " " + lastName);
     }
-    
-    
+
     // must remove this
-    
     @Override
     public void confirmationMessage() {
         System.out.println("--------------------------------------------------------------------");

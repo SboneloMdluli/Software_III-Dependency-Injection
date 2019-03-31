@@ -1,4 +1,6 @@
 package restaround;
+import java.util.List;
+import restaround.MenuImpl.foodItem;
 
 public interface Menu {
 
@@ -8,4 +10,5 @@ public interface Menu {
 
     public void removeMeal(String item_name);
 
+    public List<foodItem> getMenu();
 }
