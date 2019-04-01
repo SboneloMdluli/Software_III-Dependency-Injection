@@ -16,7 +16,6 @@ public class chef {
         chefMenu.addMeal("Yakitori", 80, 35);
         chefMenu.addMeal("Chidori", 85, 35);
         
-        
     }
              
     void getMenu(){ 

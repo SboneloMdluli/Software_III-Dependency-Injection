@@ -90,8 +90,7 @@ public class processOrderImplTest {
         
         boolean result = instance.transaction(balance, itemPrice);
   
-        assertEquals(expResult, result);
-      
+         assertEquals(expResult, result);
     }
     
      @Test
@@ -103,14 +102,12 @@ public class processOrderImplTest {
         
         double balance = 100.0;
         double itemPrice = 20.0;
-        int quantity = 5;
-        instance.setQuantity(quantity);
         
         boolean expResult = true;
         
         boolean result = instance.transaction(balance, itemPrice);
-  
-        assertEquals(expResult, result);
+       
+       assertEquals(expResult, result);
       
     }
     

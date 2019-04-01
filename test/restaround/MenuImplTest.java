@@ -18,22 +18,22 @@ import static org.junit.Assert.*;
  * @author mylaptop
  */
 public class MenuImplTest {
-    
+
     public MenuImplTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -44,28 +44,15 @@ public class MenuImplTest {
     @Test
     public void testGetMenu() {
         System.out.println("getMenu");
-         MenuImpl instance = new MenuImpl();
-         String itemName = "red";
+        MenuImpl instance = new MenuImpl();
+        String itemName = "red";
         double itemPrice = 20.0;
         double itemPrepTime = 40.0;
-         int expectRlt = instance.getMenu().size()+1;
+        int expectRlt = instance.getMenu().size() + 1;
         instance.addMeal(itemName, itemPrice, itemPrepTime);
 
         assertEquals(expectRlt, instance.getMenu().size());
     }
-
-    /**
-     * Test of printMenu method, of class MenuImpl.
-     */
-    @Test
-    public void testPrintMenu() {
-        System.out.println("printMenu");
-        MenuImpl instance = new MenuImpl();
-        instance.printMenu();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
     /**
      * Test of addMeal method, of class MenuImpl.
      */
@@ -76,11 +63,11 @@ public class MenuImplTest {
         double itemPrice = 20.0;
         double itemPrepTime = 40.0;
         MenuImpl instance = new MenuImpl();
-        int expectRlt = instance.getMenu().size()+2;
+        int expectRlt = instance.getMenu().size() + 2;
         instance.addMeal(itemName, itemPrice, itemPrepTime);
         instance.addMeal(itemName, itemPrice, itemPrepTime);
-       
-       assertEquals(expectRlt, instance.getMenu().size());
+
+        assertEquals(expectRlt, instance.getMenu().size());
     }
 
     /**
@@ -92,19 +79,29 @@ public class MenuImplTest {
         String itemName = "red";
         double itemPrice = 20.0;
         double itemPrepTime = 40.0;
-        
+
         String itemName2 = "yellow";
-        
+
         MenuImpl instance = new MenuImpl();
 
         instance.addMeal(itemName, itemPrice, itemPrepTime);
         instance.addMeal(itemName2, itemPrice, itemPrepTime);
-       
+
         instance.removeMeal("red"); // remove all occurences
         int expectRlt = 1;
-       
+
         assertEquals(expectRlt, instance.getMenu().size());
-        
+
     }
-    
+
+    @Test(expected = IllegalArgumentException.class)
+    public void NegativetestRemoveMeal() {
+        System.out.println("attempting to remove meal not added");
+
+        MenuImpl instance = new MenuImpl();
+
+        instance.removeMeal("blue"); // remove all occurences
+
+    }
+
 }

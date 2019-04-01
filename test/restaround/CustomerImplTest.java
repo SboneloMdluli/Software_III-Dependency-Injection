@@ -68,6 +68,14 @@ public class CustomerImplTest {
         assertEquals(balance,instance.getBalance(), 0.001);
     }
 
+     @Test(expected = IllegalArgumentException.class)
+    public void NegativetestSetBalance() {
+        System.out.println("set negative Balance");
+        double balance = -100.0;
+        CustomerImpl instance = new CustomerImpl();
+        instance.setBalance(balance);
+ 
+    }
     /**
      * Test of placeOrder method, of class CustomerImpl.
      */

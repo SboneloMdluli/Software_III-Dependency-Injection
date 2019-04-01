@@ -35,8 +35,13 @@ class processOrderImpl implements processOrder {
         Menu customerMenu = injector.getInstance(Menu.class);
         
         double customerBalance = customer.getBalance();
-        setQuantity(quantity);
-
+        
+        try{
+            setQuantity(quantity);
+        }catch(IllegalArgumentException ex){
+            ex.getMessage();
+        }
+        
         List<MenuImpl.foodItem> dspMenu = customerMenu.getMenu(); 
 
         for (MenuImpl.foodItem temp : dspMenu) {
@@ -45,8 +50,7 @@ class processOrderImpl implements processOrder {
                 
             }
         }
-        
-
+       
     }
 
     @Override
