@@ -6,9 +6,9 @@ public class chef {
    
     private final Menu chefMenu; 
             
-    @Inject // constructor injection 
+    @Inject 
     chef(Menu chefMenu){
-       
+        // add all available meals 
         this.chefMenu = chefMenu;
         chefMenu.addMeal("Ramen", 45, 20);
         chefMenu.addMeal("Gyoza",65 , 30);
@@ -16,11 +16,15 @@ public class chef {
         chefMenu.addMeal("Yakitori", 80, 35);
         chefMenu.addMeal("Chidori", 85, 35);
         
-        //chefMenu.removeMeal("Chidori");
+        
     }
              
     void getMenu(){ 
         chefMenu.printMenu();
+    }
+    
+    void removeMeal(String meal){ 
+        chefMenu.removeMeal(meal);
     }
             
 }

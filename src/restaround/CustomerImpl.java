@@ -21,7 +21,12 @@ class CustomerImpl implements Customer {
         this.lastName = lastName;
         this.email = email;
         this.accNum = accNum;
-        setBalance(balance);
+        try {
+            setBalance(balance);
+
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
 
         Injector injector = Guice.createInjector(new databaseModule());
         customerRepository customerDatabase = injector.getInstance(customerRepository.class);
@@ -35,7 +40,11 @@ class CustomerImpl implements Customer {
 
     @Override
     public void setBalance(double balance) {
-        this.balance = balance;
+        if (balance < 0) {
+            throw new IllegalArgumentException("negative balance");
+        } else {
+            this.balance = balance;
+        }
     }
 
     @Override
@@ -50,9 +59,8 @@ class CustomerImpl implements Customer {
         balance = balance - itemPrice;
         setBalance(balance);
     }
-    
-    
-     @Override
+
+    @Override
     public double getAccNumber() {
         return accNum;
     }
@@ -66,6 +74,13 @@ class CustomerImpl implements Customer {
     public void login(final String firstName, final String lastName) {
         Injector injector = Guice.createInjector(new menuModule());
         chef masterChef = injector.getInstance(chef.class);
+        try {
+            masterChef.removeMeal("Chidori"); // remove the meal as the restraunt ran out of ingredients
+
+        } catch (IllegalArgumentException ex) {
+            System.out.println(ex.getMessage());
+        }
+
         masterChef.getMenu();
     }
 

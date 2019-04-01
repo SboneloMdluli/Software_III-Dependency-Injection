@@ -11,7 +11,7 @@ public class RestAround {
         Injector injector = Guice.createInjector();
         Customer customer = injector.getInstance(Customer.class);
 
-        customer.registrationForm("Sbonelo", "Mdluli", "mdlulisbonelo@gmail.com", 902838, 200);
+        customer.registrationForm("Sbonelo", "Mdluli", "mdlulisbonelo@gmail.com", 902838, -200);
 
         customer.confirmationMessage();
 

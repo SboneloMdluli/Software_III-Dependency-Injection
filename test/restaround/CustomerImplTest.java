@@ -96,7 +96,7 @@ public class CustomerImplTest {
         CustomerImpl instance = new CustomerImpl();
         instance.setBalance(balance);
         instance.updateBalance(itemPrice); // money that is used 
-        // TODO review the generated test code and remove the default call to fail.
+      
         assertEquals(instance.getBalance(),balance-itemPrice, 0.001);
     }
 

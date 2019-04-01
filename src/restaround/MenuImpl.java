@@ -59,13 +59,16 @@ class MenuImpl implements Menu {
     @Override
     public void removeMeal(String item_name) {
         List<foodItem> tmp_MENU = getMenu();
-        int i = 0;
+        List<foodItem> found = new ArrayList<foodItem>();
         for (foodItem temp : tmp_MENU) {
             if (temp.get_itemName().contains(item_name)) {
-                // System.out.println(temp);
-                //tmp_MENU.remove(temp);
+                found.add(temp);
             }
-            i++;
+        }
+        tmp_MENU.removeAll(found);
+        
+        if(found.isEmpty()){
+            throw new IllegalArgumentException("such a food item is not on the menu");
         }
     }
 
