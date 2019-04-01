@@ -22,4 +22,5 @@ public interface Customer {
     public String getName();
     
     public double getAccNumber();
+    public String getEmail();
 }

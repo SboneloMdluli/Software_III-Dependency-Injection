@@ -5,7 +5,6 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.name.Named;
 import java.util.List;
-import java.util.NoSuchElementException;
 
 class processOrderImpl implements processOrder {
 

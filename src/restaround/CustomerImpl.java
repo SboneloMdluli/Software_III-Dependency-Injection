@@ -51,12 +51,12 @@ class CustomerImpl implements Customer {
     public void placeOrder(String item, int quantity) {
         Injector injector = Guice.createInjector(new processOrderModule());
         processOrderImpl payment = injector.getInstance(processOrderImpl.class);
-         if (quantity < 0) {
+        if (quantity < 0) {
             throw new IllegalArgumentException("negative quantity");
         } else {
-             payment.Bill(item, quantity);
+            payment.Bill(item, quantity);
         }
-       
+
     }
 
     @Override
@@ -73,6 +73,11 @@ class CustomerImpl implements Customer {
     @Override
     public double getBalance() {
         return balance;
+    }
+
+    @Override
+    public String getEmail() {
+        return email;
     }
 
     @Override
