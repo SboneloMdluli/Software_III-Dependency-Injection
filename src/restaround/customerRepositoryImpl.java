@@ -43,7 +43,6 @@ public class customerRepositoryImpl implements customerRepository {
             newDB.write(name);
             newDB.newLine();
             newDB.close();
-
             noOfcustomers++;
         }
 

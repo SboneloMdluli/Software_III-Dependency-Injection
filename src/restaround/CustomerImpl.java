@@ -1,6 +1,7 @@
 package restaround;
 
 import com.google.inject.Guice;
+import com.google.inject.Inject;
 import com.google.inject.Injector;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -13,9 +14,28 @@ class CustomerImpl implements Customer {
     private String email;
     private double accNum;
     static private double balance;
+    private chef customerMenu; 
+    
+    private processOrder order; 
+    private customerRepository customerDatabase; 
+    
+    @Inject
+    public void setMenu(chef customerMenu) {
+        this.customerMenu = customerMenu;
+    } 
+    
+    @Inject
+    public void setOrder(processOrder order) {
+        this.order = order;
+    } 
+    
+     @Inject
+    public void setDatabase(customerRepository customerDatabase) {
+        this.customerDatabase = customerDatabase;
+    } 
 
     @Override
-
+    @notification // after this function registration message
     public void registrationForm(final String firstName, final String lastName, final String email, final double accNum, double balance) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,14 +48,12 @@ class CustomerImpl implements Customer {
             System.out.println(ex.getMessage());
         }
 
-        Injector injector = Guice.createInjector(new databaseModule());
-        customerRepository customerDatabase = injector.getInstance(customerRepository.class);
+        // store customer in database
         try {
             customerDatabase.addCustomer(getName());
         } catch (IOException ex) {
             Logger.getLogger(CustomerImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     @Override
@@ -49,14 +67,12 @@ class CustomerImpl implements Customer {
 
     @Override
     public void placeOrder(String item, int quantity) {
-        Injector injector = Guice.createInjector(new processOrderModule());
-        processOrderImpl payment = injector.getInstance(processOrderImpl.class);
+       
         if (quantity < 0) {
             throw new IllegalArgumentException("negative quantity");
         } else {
-            payment.Bill(item, quantity);
+            order.Bill(item, quantity);
         }
-
     }
 
     @Override
@@ -82,16 +98,17 @@ class CustomerImpl implements Customer {
 
     @Override
     public void login(final String firstName, final String lastName) {
-        Injector injector = Guice.createInjector(new menuModule());
-        chef masterChef = injector.getInstance(chef.class);
+        
         try {
-            masterChef.removeMeal("Chidori"); // remove the meal as the restraunt ran out of ingredients
-
+            //the chefImpl removes the meal as the restraunt ran out of ingredients
+            customerMenu.removeMeal("Chidori");
+      
         } catch (IllegalArgumentException ex) {
             System.out.println(ex.getMessage());
         }
 
-        masterChef.getMenu(); // print menu for customer
+        // hand printed menu to customer
+        customerMenu.getMenu();
     }
 
     @Override

@@ -14,14 +14,17 @@
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/RestAround.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/CustomerImpl.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/test/restaround/CustomerImplTest.java</file>
+            <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/notifierModule.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/customerRepository.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/notifier.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/notifierImpl.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/customerRepositoryProvider.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/processOrderImpl.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/chef.java</file>
+            <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/notifierInterceptor.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/customerRepositoryImpl.java</file>
             <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/test/restaround/MenuImplTest.java</file>
+            <file>file:/C:/Users/mylaptop/Desktop/software_project/RestAround/src/restaround/experiment.java</file>
         </group>
     </open-files>
 </project-private>

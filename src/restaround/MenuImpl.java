@@ -5,8 +5,8 @@ import java.util.List;
 
 // menu implementation
 class MenuImpl implements Menu {
+    
     // define the properties of a food item
-
     class foodItem {
 
         final String item_name;
@@ -59,7 +59,7 @@ class MenuImpl implements Menu {
     @Override
     public void removeMeal(String item_name) {
         List<foodItem> tmp_MENU = getMenu();
-        List<foodItem> found = new ArrayList<foodItem>();
+        List<foodItem> found = new ArrayList<>();
         for (foodItem temp : tmp_MENU) {
             if (temp.get_itemName().contains(item_name)) {
                 found.add(temp);

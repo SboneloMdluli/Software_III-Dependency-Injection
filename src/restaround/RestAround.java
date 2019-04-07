@@ -6,19 +6,16 @@ import com.google.inject.Injector;
 public class RestAround {
 
     public static void main(String[] args) {
-        //driver code
 
-        Injector injector = Guice.createInjector();
+        Injector injector = Guice.createInjector(new processOrderModule());
         Customer customer = injector.getInstance(Customer.class);
 
-        customer.registrationForm("Sbonelo", "Mdluli", "mdlulisbonelo@gmail.com", 902838, 200);
+        customer.registrationForm("Sbonelo", "Mdluli", "mdlulisbonelo@gmail.com", 902838, 180);
 
-        customer.confirmationMessage();
-
+        // customer.confirmationMessage(); // intercept before
         customer.login("red", "redemption");
 
-        customer.placeOrder("Okonimiyaki", 2);
-       
+        customer.placeOrder("Okonimiyaki", 2);  // intercept after
 
     }
 }
