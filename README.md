@@ -4,8 +4,8 @@
 
 ```
 The IDE used to develop the program is NetBeans IDE 8.2
-<https://netbeans.org/downloads/8.2/>
 ```
+https://netbeans.org/downloads/8.2/ 
 
 ### Setting up packages
 
@@ -24,6 +24,9 @@ guice-testlib-4.2.2.jar
 guice-multibindings-4.2.2.jar
 
 ```
+### Downloading the files
+The files can be downloaded from the link below
+https://www.tutorialspoint.com/guice/guice_environment.htm
 
 ## Running the tests
 
