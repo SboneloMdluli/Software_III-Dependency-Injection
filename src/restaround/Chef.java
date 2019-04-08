@@ -1,6 +1,6 @@
 package restaround;
 
-public interface chef {
+public interface Chef {
     void getMenu();
     
     void removeMeal(String meal);

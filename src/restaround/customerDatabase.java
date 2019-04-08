@@ -2,7 +2,7 @@ package restaround;
 
 import java.io.IOException;
 
-public interface customerRepository {
+public interface customerDatabase {
 
     public void addCustomer(String name) throws IOException;
 

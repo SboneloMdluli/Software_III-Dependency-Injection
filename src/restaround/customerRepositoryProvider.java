@@ -5,13 +5,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 
-public class customerRepositoryProvider implements Provider<customerRepository> {
+public class customerRepositoryProvider implements Provider<customerDatabase> {
 
     int noOfcustomers;
 
     @Override
-    public customerRepository get() {
-
+    public customerDatabase get() {
+        // get number of users currently registred
         try {
             FileReader database = new FileReader("customerDatabase.txt");
             LineNumberReader lineNumber = new LineNumberReader(database);
@@ -24,7 +24,7 @@ public class customerRepositoryProvider implements Provider<customerRepository> 
             e.printStackTrace();
         }
 
-        customerRepository customerRepository = new customerRepositoryImpl();
+        customerDatabase customerRepository = new customerDatabaseImpl();
         customerRepository.SetnoOfcustomers(noOfcustomers);
         return customerRepository;
     }

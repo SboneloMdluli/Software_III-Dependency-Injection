@@ -1,26 +1,32 @@
 package restaround;
 
-import com.google.inject.Guice;
 import com.google.inject.Inject;
-import com.google.inject.Injector;
+import com.google.inject.Provider;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 class CustomerImpl implements Customer {
 
-    private String firstName;
-    private String lastName;
-    private String email;
-    private double accNum;
+    static private String firstName;
+    static private String lastName;
+    static private String email;
+    static private double accNum;
     static private double balance;
-    private chef customerMenu; 
     
+    private Chef customerMenu; 
     private processOrder order; 
-    private customerRepository customerDatabase; 
+    private customerDatabase customerDatabase;
     
     @Inject
-    public void setMenu(chef customerMenu) {
+    private Provider<customerDatabase> database; 
+ 
+        public customerDatabase getConnection(){
+        return database.get();
+    }   
+    
+    @Inject
+    public void setMenu(Chef customerMenu) {
         this.customerMenu = customerMenu;
     } 
     
@@ -30,12 +36,12 @@ class CustomerImpl implements Customer {
     } 
     
      @Inject
-    public void setDatabase(customerRepository customerDatabase) {
+    public void setDatabase(customerDatabase customerDatabase) {
         this.customerDatabase = customerDatabase;
     } 
 
     @Override
-    @notification // after this function registration message
+    @notification // send confirmation message
     public void registrationForm(final String firstName, final String lastName, final String email, final double accNum, double balance) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -50,6 +56,9 @@ class CustomerImpl implements Customer {
 
         // store customer in database
         try {
+            
+            //get the database the customer is connected to
+            System.out.println("Connecting to "+getConnection()); 
             customerDatabase.addCustomer(getName());
         } catch (IOException ex) {
             Logger.getLogger(CustomerImpl.class.getName()).log(Level.SEVERE, null, ex);
@@ -72,7 +81,9 @@ class CustomerImpl implements Customer {
             throw new IllegalArgumentException("negative quantity");
         } else {
             order.Bill(item, quantity);
+            System.out.println("Ordered: " + quantity +" "+ item+"'s");
         }
+        
     }
 
     @Override
@@ -116,17 +127,5 @@ class CustomerImpl implements Customer {
         return (firstName + " " + lastName);
     }
 
-    // must remove this
-    @Override
-    public void confirmationMessage() {
-        System.out.println("--------------------------------------------------------------------");
-        System.out.println("Thank you for registring with us, please confirm your login details");
-        System.out.println("Dear: " + firstName + " " + lastName);
-        System.out.println("--------Your Acoount Confirmation------- ");
-        System.out.println("Your login email address: " + email);
-        System.out.println("Your Bank Account Number: " + accNum);
-        System.out.println("--------------------------------------------------------------------");
-
-    }
-
+  
 }

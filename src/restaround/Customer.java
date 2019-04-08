@@ -9,8 +9,6 @@ public interface Customer {
 
     public void login(final String firstName, final String lastName);
 
-    public void confirmationMessage();
-
     public void placeOrder(String item, int quantity);
 
     public void setBalance(double balance);

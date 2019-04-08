@@ -30,7 +30,6 @@ class processOrderImpl implements processOrder {
         return succesfulPurchase;
     }
 
-    //@notification // after the method transaction message
     @Override
     public void Bill(String item_name, int quantity) {
 

@@ -2,13 +2,13 @@
 package restaround;
 import com.google.inject.Inject;
 
-public class chefImpl implements chef{
+public class chefImpl implements Chef{
    
     private final Menu chefMenu; 
      
     // the chefImpl prepares the menu
     @Inject 
-    chefImpl(Menu chefMenu){
+    private chefImpl(Menu chefMenu){
         this.chefMenu = chefMenu;
         chefMenu.addMeal("Ramen", 45, 20);
         chefMenu.addMeal("Gyoza",65 , 30);

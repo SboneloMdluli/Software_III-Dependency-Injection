@@ -37,28 +37,6 @@ public class CustomerImplTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of registrationForm method, of class CustomerImpl.
-     */
-    @Test
-    public void testRegistrationForm() {
-        System.out.println("registrationForm");
-        String firstName = "Sbonelo";
-        String lastName = "Mdluli";
-        String email = "mdlulisbonelo@gmail.com";
-        double accNum = 1990.0;
-        double balance = 1000.0;
-        CustomerImpl instance = new CustomerImpl();
-        instance.registrationForm(firstName, lastName, email, accNum, balance);
-              //check details after registration of new customer
-        assertEquals(firstName+" "+lastName,instance.getName());
-        assertEquals(accNum,instance.getAccNumber(), 0.001);
-        assertEquals(balance,instance.getBalance(), 0.001);
-    }
-
-    /**
-     * Test of setBalance method, of class CustomerImpl.
-     */
     @Test
     public void testSetBalance() {
         System.out.println("setBalance");
@@ -76,26 +54,7 @@ public class CustomerImplTest {
         instance.setBalance(balance);
  
     }
-    /**
-     * Test of placeOrder method, of class CustomerImpl.
-     */
-    @Test
-    public void testPlaceOrder() {
-        System.out.println("placeOrder");
-        String item = "Okonimiyaki";
-        int quantity = 1;
-        double balance = 2000.0;
-        
-        CustomerImpl instance = new CustomerImpl();
-        instance.setBalance(balance);
-        instance.placeOrder(item, quantity);
-        
-      
-    }
-
-    /**
-     * Test of updateBalance method, of class CustomerImpl.
-     */
+ 
     @Test
     public void testUpdateBalance() {
         System.out.println("updateBalance");

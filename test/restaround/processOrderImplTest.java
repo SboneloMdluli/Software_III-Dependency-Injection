@@ -44,8 +44,9 @@ public class processOrderImplTest {
     public void testSetQuantity() {
         System.out.println("setQuantity");
         int quantity = 5;
-        CustomerImpl mock = new CustomerImpl();
-        processOrderImpl instance = new processOrderImpl(mock);
+        CustomerImpl customer = new CustomerImpl();
+        MenuImpl menu = new MenuImpl();
+        processOrderImpl instance = new processOrderImpl(customer, menu);
         instance.setQuantity(quantity);
         // TODO review the generated test code and remove the default call to fail.
         assertEquals(quantity,instance.getQuantity(), 0.001);
@@ -57,8 +58,9 @@ public class processOrderImplTest {
     @Test
     public void testGetQuantity() {
         System.out.println("getQuantity");
-        CustomerImpl mock = new CustomerImpl();
-        processOrderImpl instance = new processOrderImpl(mock);
+         CustomerImpl customer = new CustomerImpl();
+        MenuImpl menu = new MenuImpl();
+        processOrderImpl instance = new processOrderImpl(customer, menu);
         int quantity = 5;
         instance.setQuantity(quantity);
         int expResult = 5;
@@ -78,8 +80,9 @@ public class processOrderImplTest {
     public void NegativetestTransaction() {
         System.out.println("transaction");
       
-        CustomerImpl mock = new CustomerImpl();
-        processOrderImpl instance = new processOrderImpl(mock);
+        CustomerImpl customer = new CustomerImpl();
+        MenuImpl menu = new MenuImpl();
+        processOrderImpl instance = new processOrderImpl(customer, menu);
         
         double balance = 100.0;
         double itemPrice = 2000.0;
@@ -88,7 +91,9 @@ public class processOrderImplTest {
         
         boolean expResult = false;
         
-        boolean result = instance.transaction(balance, itemPrice);
+        instance.transaction(balance, itemPrice);
+        
+        boolean result = instance.purchaseStatus();
   
          assertEquals(expResult, result);
     }
@@ -97,8 +102,9 @@ public class processOrderImplTest {
     public void PositivetestTransaction() {
         System.out.println("transaction");
      
-        CustomerImpl mock = new CustomerImpl();
-        processOrderImpl instance = new processOrderImpl(mock);
+         CustomerImpl customer = new CustomerImpl();
+        MenuImpl menu = new MenuImpl();
+        processOrderImpl instance = new processOrderImpl(customer, menu);
         
         double balance = 100.0;
         double itemPrice = 20.0;

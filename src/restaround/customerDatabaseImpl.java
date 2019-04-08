@@ -1,30 +1,35 @@
 package restaround;
 
 import com.google.inject.Inject;
+import com.google.inject.name.Named;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class customerRepositoryImpl implements customerRepository {
-
+public class customerDatabaseImpl implements customerDatabase {
+    
     static int noOfcustomers;
-
+    private int capacity;
+    
     @Override
     public int noOfcustomers() {
         return noOfcustomers;
     }
 
-    @Inject
     @Override
     public void SetnoOfcustomers(int noOfcustomers) {
         this.noOfcustomers = noOfcustomers;
+    }
+    
+    @Inject
+    public void setCapacity(@Named("default quantity") int capacity){
+        this.capacity = capacity;
     }
 
     @Inject
     @Override
     public void addCustomer(String name) throws IOException {
-        final int capacity = 10;
-
+       
         FileWriter database = new FileWriter("customerDatabase.txt", true);
         BufferedWriter bw = new BufferedWriter(database);
 
@@ -36,7 +41,7 @@ public class customerRepositoryImpl implements customerRepository {
             noOfcustomers++;
 
         } else {
-
+            //connect to new database
             FileWriter newDtabase = new FileWriter("newDatabase.txt", true);
             BufferedWriter newDB = new BufferedWriter(newDtabase);
 
